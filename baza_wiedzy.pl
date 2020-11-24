@@ -2,6 +2,11 @@
         xpozytywne/1,
         xnegatywne/1.
 
+        znajdz_film(X) :- jest_to_film(X),
+        format('~nPolecanym filmem moze byc ~w', X),
+        nl, wyczysc_fakty.
+
+        jest_to_film(madagaskar) :- jest_to(animacja),jest_to(familijny),jest_to(dla_dzieci).
         jest_to_film(szeregowiec_ryan) :- jest_to(dramat), jest_to(historyczny).
         jest_to_film(fight_club) :- jest_to(thriller), jest_to(historyczny).
         jest_to_film(nietykalni) :- jest_to(dramat), jest_to(komedia).
@@ -18,7 +23,6 @@
         jest_to_film(harry_potter) :- jest_to(familijny), jest_to(fantasy),jest_to(dla_dzieci),jest_to(przygodowy).
         jest_to_film(deadpool) :- jest_to(komedia),jest_to(akcja),jest_to(sci_fi).
         jest_to_film(zjawa) :- jest_to(dramat),jest_to(przygodowy),jest_to(western).
-        jest_to_film(madagaskar) :- jest_to(animacja),jest_to(familijny),jest_to(dla_dzieci).
         jest_to_film(deadpool) :- jest_to(komedia),jest_to(akcja),jest_to(sci_fi).
         jest_to_film(teoria_wszystkiego) :- jest_to(biograficzny),jest_to(dramat),jest_to(edukacyjny).
         jest_to_film(snajper) :- jest_to(biograficzny),jest_to(dramat),jest_to(wojenny).
@@ -114,16 +118,13 @@
 
         pozytywne(X) :- xpozytywne(X), !.
 
-        pozytywne(X) :- \+xnegatywne(X), pytaj(X,tak).
+        pozytywne(X) :- \+xnegatywne(X), !, pytaj(X).
 
         negatywne(X) :- xnegatywne(X), !.
 
-        negatywne(X) :- \+xpozytywne(X), pytaj(X,nie).
+        negatywne(X) :- \+xpozytywne(X),!, pytaj(X).
 
 
 
-        pamietaj(X,tak) :- assertz(xpozytywne(X)).
-
-        pamietaj(X,nie) :- assertz(xnegatywne(X)).
-
-        tmp(X) :- true.
+        pamietaj(X,tak) :- assertz(xpozytywne(X)),format('pamietaj tak ~w', [X]).
+        pamietaj(X,nie) :- assertz(xnegatywne(X)),format('pamietaj nie').

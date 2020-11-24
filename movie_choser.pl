@@ -1,5 +1,5 @@
 :-include('baza_wiedzy.pl').
-        pytaj(X,tak) :- !, format('~w? (t/n)~n',[X]),
+        pytaj(X) :- !, format('~w? (t/n)~n',[X]),
         read(Reply),
         pamietaj(X,Reply).
 

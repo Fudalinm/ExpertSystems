@@ -1,16 +1,39 @@
 from pyswip import *
 
+def read():
+    x = str(input())
+    return x
+def pytaj(pytanie):
+    print(pytanie," ? (tak/nie)")
+    inp = read()
+    while inp not in ["tak", "nie"]:
+        print("odpowiedz musi być (tak/nie)")
+        inp = read()
+    pamietaj = Functor("pamietaj",2)
+    call(pamietaj(pytanie,inp))
+    # PL_cons_functor_v()
+    # prolog.query("pamietaj("+ str(X) +"," + inp+")").close()
+    # prolog.query("pamietaj(X,"+inp+")").close()
 
+
+pytaj.arity = 1
 if __name__ =="__main__":
 
     prolog = Prolog()
+    registerForeign(pytaj)
     prolog.consult("baza_wiedzy.pl")
-    a = Variable()
-    jest_to_film = Functor("jest_to_film", 1)
-    jest_to_film_query = Query(jest_to_film(a))
-    while jest_to_film_query.nextSolution():
-        print(a.value)
-    jest_to_film_query.closeQuery()
+    # to też działa :D
+    # for result in prolog.query("jest_to_film(X)"):
+    #     # r = result["X"]
+    #     # print(r)
+    #     pass
+    X = Variable()
+
+    jest_to_film = Functor("znajdz_film",1)
+    q = Query(jest_to_film(X))
+    while q.nextSolution():
+        print("Hello,", X.value)
+    q.closeQuery()
 
 
 
