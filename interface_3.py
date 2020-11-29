@@ -1,15 +1,15 @@
 from subprocess import *
-import threading
+# import threading
 from logging.handlers import *
+import sys
 import time
-
 
 def cmd_as_bytes(s):
     return s
 
 
-def start_terminal(p):
-    return Popen(p, bufsize=0, stdout=PIPE, stdin=PIPE, stderr=PIPE, universal_newlines=True, shell=True)
+def start_terminal(prolog):
+    return Popen(prolog, stdout=PIPE, stdin=PIPE, stderr=PIPE,  shell=True,universal_newlines=True)
 
 
 def send_data(p, data):
@@ -18,43 +18,45 @@ def send_data(p, data):
     p.stdin.flush()
 
 
+
 def read_data(p):
     while True:
-        r = p.stdout.readline()
+        print("xD1")
+        r = p.stdout.read(1)
+        # r = r.decode('utf-8')
         print('Out :' + r)
+
 
 
 def read_err(p):
     while True:
-        # p.stderr.flush()
+        print("xD2")
         r = p.stderr.readline()
+        # r=r.decode('utf-8')
         print('Err: ' + r)
 
 
 def send_thr(p):
     while True:
-        x = input('>>')
-        send_data(p, x)
+        x = input()
+        send_data(p,x)
+
 
 
 if __name__ == "__main__":
-    PROLOG_LOCALIZATION = "swipl"
-    FILE_TO_LOAD = "movie_choser.pl"
-    MAIN_FUNCTION = "wykonaj."
+    PROLOG_LOCALIZATION = ["python", "echo.py"]
 
-    cmd = start_terminal([PROLOG_LOCALIZATION, FILE_TO_LOAD])
 
-    send_data(cmd,MAIN_FUNCTION)
+    cmd = start_terminal(PROLOG_LOCALIZATION)
 
     # start processes
     read_thread = threading.Thread(target=read_data, args=(cmd,))
     err_thread = threading.Thread(target=read_err, args=(cmd,))
-    send_thread = threading.Thread(target=send_thr, args=(cmd,))
+    send_thread  = threading.Thread(target=send_thr,args=(cmd,))
 
     read_thread.start()
     err_thread.start()
     send_thread.start()
 
 
-    read_thread.join()
-    err_thread.join()
+    send_thread.join()
