@@ -10,9 +10,9 @@
         retractall(xnegatywne(_)),
         get_char(_).
 
-        wykonaj :- jest_to_film(X), !,
+        wykonaj :- set_stream(current_output, tty(true)), jest_to_film(X), !,
         format('~nPolecanym filmem moze byc ~w', X),
         nl, wyczysc_fakty.
 
-        wykonaj :- write('Nie jestem w stanie polecić żadnego filmu.'), nl,
+        wykonaj :- set_stream(current_output, tty(true)), write('Nie jestem w stanie polecić żadnego filmu.'), nl,
         wyczysc_fakty.
