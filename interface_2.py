@@ -39,7 +39,7 @@ def send_thr(p):
 
 if __name__ == "__main__":
     PROLOG_LOCALIZATION = "swipl"
-    FILE_TO_LOAD = "[movie_choser]."
+    FILE_TO_LOAD = "movie_choser.pl"
     MAIN_FUNCTION = "wykonaj."
 
     cmd = start_terminal([PROLOG_LOCALIZATION, FILE_TO_LOAD])
