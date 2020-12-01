@@ -126,5 +126,5 @@
 
 
 
-        pamietaj(X,tak) :- assertz(xpozytywne(X)),format('pamietaj tak ~w', [X]).
-        pamietaj(X,nie) :- assertz(xnegatywne(X)),format('pamietaj nie').
+        pamietaj(X,tak) :- assertz(xpozytywne(X)).
+        pamietaj(X,nie) :- assertz(xnegatywne(X)).
