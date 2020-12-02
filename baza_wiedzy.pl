@@ -86,7 +86,7 @@
         jest_to(edukacyjny) :- negatywne('czy lubisz gdy sie cos dzieje'), pozytywne('czy film ma cie czegos nauczyc').
 
         jest_to(romantyczne) :- pozytywne('czy jestes kobieta'), negatywne('czy masz dobry humor'), pozytywne(' czy latwo cie wystraszyc').
-        jest_to(romantyczne) :- pozytywne('czy ogladasz z dziewczyna'), negatywne('czy ogladasz w wiele osob'), pozytywne('czy ogladasz wieczorem'), pozytywne('czy masz dobry humor').
+        jest_to(romantyczne) :- pozytywne('czy_ogladasz_z_partner(em|ką)'), negatywne('czy ogladasz w wiele osob'), pozytywne('czy ogladasz wieczorem'), pozytywne('czy masz dobry humor').
 
         jest_to(fantastyka) :- pozytywne('Czy grasz w gry'), pozytywne('czy ogladasz w wiele osob'), pozytywne('czy lubisz sceny walki').
 
@@ -94,7 +94,7 @@
 
         jest_to(dokumentalny) :-  pozytywne('czy film ma cie czegos nauczyc').
 
-        jest_to(katastroficzny) :- negatywne(czy_ogladasz_z_dziecmi), pozytywne('czy ogladasz wieczorem'), negatywne('czy latwo cie wystraszyc'), pozytywne('czy ogladasz z dziewczyna').
+        jest_to(katastroficzny) :- negatywne(czy_ogladasz_z_dziecmi), pozytywne('czy ogladasz wieczorem'), negatywne('czy latwo cie wystraszyc'), pozytywne('czy_ogladasz_z_partner(em|ką)').
 
         jest_to(muzyczny) :- pozytywne('czy jestes kobieta'), pozytywne('Czy latwo sie wzruszasz').
 
@@ -106,10 +106,10 @@
 
         jest_to(thriller) :- negatywne(czy_ogladasz_z_dziecmi), negatywne(czy_jestes_dzieckiem), pozytywne('czy chcesz ogladac film dlugometrazowy'), pozytywne('czy lubisz gdy sie cos dzieje'), pozytywne('czy masz przekaske').
 
-        jest_to(western) :- negatywne('czy jestes kobieta'), negatywne('czy ogladasz z dziewczyna'), pozytywne('czy lubisz stare filmy'), pozytywne('czy chcesz ogladac film dlugometrazowy').
+        jest_to(western) :- negatywne('czy jestes kobieta'), negatywne('czy_ogladasz_z_partner(em|ką)'), pozytywne('czy lubisz stare filmy'), pozytywne('czy chcesz ogladac film dlugometrazowy').
 
         jest_to(horror) :- negatywne(czy_ogladasz_z_dziecmi), pozytywne('czy ogladasz wieczorem'), negatywne('czy latwo cie wystraszyc'), negatywne('czy ogladasz w wiele osob'), negatywne('czy chcesz sie zrelaksowac'), negatywne(czy_jestes_dzieckiem).
-        jest_to(horror) :- pozytywne('czy ogladasz wieczorem'), pozytywne('czy latwo cie wystraszyc'), pozytywne('czy ogladasz z dziewczyna'), negatywne('czy ogladasz w wiele osob'), negatywne(czy_jestes_dzieckiem).
+        jest_to(horror) :- pozytywne('czy ogladasz wieczorem'), pozytywne('czy latwo cie wystraszyc'), pozytywne('czy_ogladasz_z_partner(em|ką)'), negatywne('czy ogladasz w wiele osob'), negatywne(czy_jestes_dzieckiem).
 
         jest_to(kryminal) :- pozytywne('czy lubisz watki kryminalne').
 
