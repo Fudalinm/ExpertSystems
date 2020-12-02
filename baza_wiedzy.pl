@@ -108,7 +108,7 @@
 
         jest_to(western) :- negatywne('czy jestes kobieta'), negatywne('czy ogladasz z dziewczyna'), pozytywne('czy lubisz stare filmy'), pozytywne('czy chcesz ogladac film dlugometrazowy').
 
-        jest_to(horror) :- negatywne(czy_ogladasz_z_dziecmi), pozytywne('czy ogladasz wieczorem'), negatywne('czy latwo cie wystraszyc'), negatywne('czy ogladasz w wiele osob'), negatywny('czy chcesz sie zrelaksowac'), negatywne(czy_jestes_dzieckiem).
+        jest_to(horror) :- negatywne(czy_ogladasz_z_dziecmi), pozytywne('czy ogladasz wieczorem'), negatywne('czy latwo cie wystraszyc'), negatywne('czy ogladasz w wiele osob'), negatywne('czy chcesz sie zrelaksowac'), negatywne(czy_jestes_dzieckiem).
         jest_to(horror) :- pozytywne('czy ogladasz wieczorem'), pozytywne('czy latwo cie wystraszyc'), pozytywne('czy ogladasz z dziewczyna'), negatywne('czy ogladasz w wiele osob'), negatywne(czy_jestes_dzieckiem).
 
         jest_to(kryminal) :- pozytywne('czy lubisz watki kryminalne').
@@ -128,3 +128,9 @@
 
         pamietaj(X,tak) :- assertz(xpozytywne(X)).
         pamietaj(X,nie) :- assertz(xnegatywne(X)).
+
+    pytaj_dodatkowo :- pytaj_plec, pytaj_dziecko, pytaj_dlugometrazowy, pytaj_nauczyc.
+    pytaj_plec :- pytaj('czy jestes kobieta').
+    pytaj_dziecko :- pytaj(czy_jestes_dzieckiem).
+    pytaj_dlugometrazowy :- pytaj('czy chcesz ogladac film dlugometrazowy').
+    pytaj_nauczyc :- pytaj('czy film ma cie czegos nauczyc').

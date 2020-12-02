@@ -77,7 +77,7 @@ class GuiPart(tk.Frame):
                     msg = msg.replace(' (t/n)', '')
                     msg = msg[0].upper() + msg[1:]
                     self.textview["text"] = msg
-                if "Polecanym filmem moze byc" in msg or "Nie jestem w stanie polecić żadnego filmu" in msg:
+                if "Polecanym filmem moze byc" in msg or "Nie jestem w stanie poleci" in msg:
                     self.no_button['state'] = tk.DISABLED
                     self.yes_button['state'] = tk.DISABLED
                     self.restart_button['state'] = tk.NORMAL
